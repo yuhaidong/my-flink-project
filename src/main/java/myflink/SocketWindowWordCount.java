@@ -23,6 +23,8 @@ public class SocketWindowWordCount {
                     @Override
                     public void flatMap(String value, Collector<Tuple2<String, Integer>> out) {
                         for (String word : value.split("\\s")) {
+                            // 这里能看出，其实是对每一行的所有单词都要做一遍collect的增加操作
+                            //System.out.println("word=" + word);
                             out.collect(Tuple2.of(word, 1));
                         }
                     }
